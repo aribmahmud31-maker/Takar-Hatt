@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-<meta name="theme-color" content="#061f17">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
+<meta content="#061f17" name="theme-color"/>
 <title>Taka Hat</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
@@ -63,190 +64,104 @@
     .page{display:none}.page.active{display:block}
     .toast{position:fixed;z-index:100;left:50%;bottom:88px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#111e;border:1px solid #ffffff20;padding:11px 15px;border-radius:12px;font-size:12px;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
   
-/* Owner panel */
-.ownerGateWrap{margin:18px 0 8px}
-.ownerGate{width:100%;padding:15px 16px;border-radius:16px;background:linear-gradient(145deg,#6f4bd8,#4525a7);color:#fff;font-weight:900;box-shadow:0 10px 22px #0004;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.ownerGate small{display:block;font-size:10px;opacity:.7;font-weight:700;margin-top:3px}
-.ownerModal{position:fixed;inset:0;z-index:1000;background:#000b;backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:15px}
-.ownerModal.show{display:flex}
-.ownerCard{width:min(560px,100%);max-height:92vh;overflow:auto;background:linear-gradient(145deg,#0b382a,#041a13);border:1px solid #ffffff1c;border-radius:24px;padding:18px;box-shadow:0 22px 70px #000b}
-.ownerTop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
-.ownerTitle{font-size:19px;font-weight:950}
-.ownerClose{width:40px;height:40px;border-radius:12px;background:#ffffff10;color:#fff;font-size:20px}
-.ownerSection{margin-top:13px;padding:14px;border:1px solid #ffffff12;border-radius:17px;background:#ffffff08}
-.ownerSection h3{margin:0 0 10px;font-size:14px}
-.ownerGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.ownerRow{display:grid;grid-template-columns:1fr 1fr 42px;gap:8px;align-items:end;margin-top:8px}
-.ownerMiniLabel{font-size:9px;opacity:.62;margin-bottom:5px}
-.ownerStatus{margin-top:10px;padding:10px 12px;border-radius:12px;background:#0004;font-size:11px;line-height:1.45}
-.ownerSave{width:100%;padding:14px;border-radius:14px;background:linear-gradient(145deg,#19aa78,#08724f);color:#fff;font-weight:950}
-.ownerRefresh{width:100%;padding:12px;border-radius:14px;background:#ffffff12;color:#fff;font-weight:900;margin-top:8px}
-.ownerSpinRemove{height:42px;border-radius:12px;background:#d74848;color:#fff;font-weight:950}
-.ownerPinActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-.ownerNote{font-size:10px;opacity:.64;line-height:1.45;margin-top:8px}
-@media(max-width:620px){.ownerGrid{grid-template-columns:1fr}.ownerRow{grid-template-columns:1fr 1fr 42px}}
 
 </style>
 </head>
 <body>
-
-        <div class="wrap">
-          <div id="th-announcement" style="display:none"></div>
-          <div class="top">
-            <div class="brand">
-              <div class="brandIcon">🪙</div>
-              <div><div class="brandName">টাকার হাট</div><div class="brandSub">Earn • Rewards • Wallet</div></div>
-            </div>
-            <button class="bell" onclick="toast('Notifications')">🔔</button>
-          </div>
-
-          <section id="home" class="page active">
-            <div class="hero">
-              <div class="eyebrow">Available balance • BDT • Active</div>
-              <div class="money">৳ <b id="bal">0.00</b> BDT</div>
-              <div class="today">Today: ৳ <span id="todayEarn">0.00</span></div>
-              <div class="stats">
-                <div class="stat"><strong id="ads">0</strong><span>Ads today</span></div>
-                <div class="stat"><strong id="refs">0</strong><span>Referrals</span></div>
-                <div class="stat"><strong id="streak">0</strong><span>Streak</span></div>
-              </div>
-            </div>
-
-            <div class="title">Quick earn</div>
-            <div class="grid">
-              <button class="card" onclick="go('earn')"><div class="icon">🎁</div><div class="ct">Watch &amp; Earn</div><div class="cs">Rewarded ad সম্পূর্ণ করে reward নিন।</div><div class="limit"><span>Today limit</span><b id="adRemain">50</b></div></button>
-              <button class="card" onclick="go('spin')"><div class="icon">🎡</div><div class="ct">Lucky Spin</div><div class="cs">Daily spin chance ব্যবহার করুন।</div><div class="limit"><span>Spins left</span><b id="spinRemain">1</b></div></button>
-              <button class="card" onclick="checkin()"><div class="icon">🎁</div><div class="ct">Daily Check-in</div><div class="cs">প্রতিদিন একবার bonus claim করুন।</div></button>
-              <button class="card" onclick="go('ref')"><div class="icon">👥</div><div class="ct">Refer &amp; Earn</div><div class="cs">বন্ধু invite করে reward নিন।</div></button>
-            </div>
-
-            <div class="title">Community</div>
-            <button class="join" onclick="join()">📢 জয়েন করুন</button>
-          </section>
-
-          <section id="earn" class="page">
-            <div class="title">🎁 Watch &amp; Earn</div>
-            <div class="panel">
-              <div class="panelHead"><b>Rewarded Advertisement</b><span class="muted">Left: <b id="adLeft">50</b></span></div>
-              <p class="muted">সম্পূর্ণ rewarded ad দেখলে reward যোগ হবে।</p><br/>
-              <button class="adbtn" id="adBtn" onclick="watchAd()">🎬 Watch Ad</button>
-            </div>
-          </section>
-
-          <section id="spin" class="page">
-            <div class="title">🎡 Lucky Spin</div>
-            <div class="panel wheelBox">
-              <div class="muted">আজকের Spin বাকি: <b id="spinLeft">1</b></div>
-              <div class="wheelWrap">
-  <div class="pointer"></div>
-  <div class="wheel" id="wheel">
-    <div class="wheelLabels" id="wheelLabels"></div>
-  </div>
+<div class="wrap">
+<div id="th-announcement" style="display:none"></div>
+<div class="top">
+<div class="brand">
+<div class="brandIcon">🪙</div>
+<div><div class="brandName">টাকার হাট</div><div class="brandSub">Earn • Rewards • Wallet</div></div>
 </div>
-              <button class="spinBtn" id="spinBtn" onclick="spin()">SPIN NOW</button>
-              <div class="result" id="spinResult"></div>
-            </div>
-          </section>
-
-          <section id="withdraw" class="page">
-            <div class="title">💸 Withdraw</div>
-            <div class="panel">
-              <label>Payment Method</label>
-              <select id="method"><option value="">Select method</option><option>bKash</option><option>Nagad</option><option>Rocket</option></select>
-              <label>Account Number</label><input id="number" placeholder="01XXXXXXXXX" inputmode="numeric"/>
-              <label>Amount (BDT)</label><input id="amount" type="number" placeholder="50"/>
-              <br/><br/><button class="withdraw" onclick="withdraw()">💸 Withdraw Request</button>
-            </div>
-            <div class="title">📜 History</div>
-            <div class="panel history" id="history"><div class="muted">No withdrawal yet.</div></div>
-          </section>
-
-          <section id="ref" class="page">
-            <div class="title">👥 Refer &amp; Earn</div>
-            <div class="panel">
-              <b>Your referral link</b>
-              <p class="muted" id="refLink" style="word-break:break-all;margin-top:10px"></p>
-              <br/><button class="join" onclick="copyRef()">📋 Copy Link</button>
-            </div>
-          </section>
-
-          <section id="profile" class="page">
-            <div class="title">👤 Profile</div>
-            <div class="panel">
-              <div class="row"><span>Name</span><b id="name">Guest</b></div>
-              <div class="row"><span>Telegram ID</span><b id="uid">—</b></div>
-              <div class="row"><span>Balance</span><b id="pbal">0.00 BDT</b></div>
-            </div>
-          </section>
-        </div>
-
-        <div class="nav"><div class="navin">
-          <button class="active" onclick="go('home',this)"><b>🏠</b>Home</button>
-          <button onclick="go('earn',this)"><b>🎁</b>Earn</button>
-          <button onclick="go('withdraw',this)"><b>💸</b>Withdraw</button>
-          <button onclick="go('profile',this)"><b>👤</b>Profile</button>
-        </div></div>
-        
-<div class="ownerGateWrap">
-  <button class="ownerGate" type="button" onclick="openOwnerGate()">
-    <span>🔐 Just For Owner<small>Owner settings</small></span>
-    <b>›</b>
-  </button>
+<button class="bell" onclick="toast('Notifications')">🔔</button>
 </div>
-<div class="ownerModal" id="ownerModal" aria-hidden="true">
-  <div class="ownerCard">
-    <div class="ownerTop">
-      <div><div class="ownerTitle">🔐 Just For Owner</div><div class="muted">Settings only</div></div>
-      <button class="ownerClose" type="button" onclick="closeOwnerPanel()">×</button>
-    </div>
-    <div id="ownerPinBox" class="ownerSection">
-      <h3>Owner PIN</h3>
-      <label>PIN</label>
-      <input id="ownerPinInput" type="password" inputmode="text" autocomplete="off" placeholder="Enter PIN">
-      <div id="ownerPinError" class="ownerStatus"></div>
-      <div class="ownerPinActions">
-        <button class="ownerSave" type="button" onclick="unlockOwnerPanel()">Unlock</button>
-        <button class="ownerRefresh" type="button" onclick="closeOwnerPanel()">Cancel</button>
-      </div>
-    </div>
-    <div id="ownerSettingsBox" style="display:none">
-      <div class="ownerStatus" id="ownerCloudStatus">Cloud status: checking…</div>
-      <div class="ownerSection"><h3>🎁 Watch &amp; Earn</h3><div class="ownerGrid">
-        <div><label>Ad reward (BDT)</label><input id="ownerAdReward" type="number" step="0.01" min="0"></div>
-        <div><label>Daily ad limit</label><input id="ownerAdLimit" type="number" step="1" min="0"></div>
-        <div><label>Daily Check-in reward (BDT)</label><input id="ownerDailyBonus" type="number" step="0.01" min="0"></div>
-      </div></div>
-      <div class="ownerSection"><h3>🎡 Lucky Spin</h3><div class="ownerGrid">
-        <div><label>Daily spin limit</label><input id="ownerSpinLimit" type="number" step="1" min="0"></div>
-        <div><label>Minimum withdrawal (BDT)</label><input id="ownerMin" type="number" step="0.01" min="0"></div>
-      </div></div>
-      <div class="ownerSection"><h3>🎯 Spin Rewards</h3><div id="ownerRewards"></div>
-        <button class="ownerRefresh" type="button" onclick="ownerAddReward()">＋ Add Reward</button></div>
-      <div class="ownerSection"><h3>📢 Community &amp; AdsGram</h3>
-        <label>Channel URL</label><input id="ownerChannel" type="url" placeholder="https://t.me/...">
-        <label>AdsGram Block ID</label><input id="ownerBlock" type="text" placeholder="Block ID">
-      </div>
-      <div class="ownerSection"><h3>💳 Payment Methods</h3>
-        <label><input id="ownerBkash" type="checkbox"> bKash</label>
-        <label><input id="ownerNagad" type="checkbox"> Nagad</label>
-        <label><input id="ownerRocket" type="checkbox"> Rocket</label>
-      </div>
-      <div class="ownerSection"><button class="ownerSave" type="button" onclick="ownerSaveSettings()">💾 Save Globally</button>
-        <button class="ownerRefresh" type="button" onclick="ownerRefreshFromCloud()">↻ Refresh Cloud Settings</button>
-        <div class="ownerNote">Save করলে Firebase Realtime Database-এ settings যাবে এবং একই User website খোলা অন্য ফোনগুলোও নতুন settings পাবে।</div>
-      </div>
-    </div>
-  </div>
+<section class="page active" id="home">
+<div class="hero">
+<div class="eyebrow">Available balance • BDT • Active</div>
+<div class="money">৳ <b id="bal">0.00</b> BDT</div>
+<div class="today">Today: ৳ <span id="todayEarn">0.00</span></div>
+<div class="stats">
+<div class="stat"><strong id="ads">0</strong><span>Ads today</span></div>
+<div class="stat"><strong id="refs">0</strong><span>Referrals</span></div>
+<div class="stat"><strong id="streak">0</strong><span>Streak</span></div>
 </div>
+</div>
+<div class="title">Quick earn</div>
+<div class="grid">
+<button class="card" onclick="go('earn')"><div class="icon">🎁</div><div class="ct">Watch &amp; Earn</div><div class="cs">Rewarded ad সম্পূর্ণ করে reward নিন।</div><div class="limit"><span>Today limit</span><b id="adRemain">50</b></div></button>
+<button class="card" onclick="go('spin')"><div class="icon">🎡</div><div class="ct">Lucky Spin</div><div class="cs">Daily spin chance ব্যবহার করুন।</div><div class="limit"><span>Spins left</span><b id="spinRemain">1</b></div></button>
+<button class="card" onclick="checkin()"><div class="icon">🎁</div><div class="ct">Daily Check-in</div><div class="cs">প্রতিদিন একবার bonus claim করুন।</div></button>
+<button class="card" onclick="go('ref')"><div class="icon">👥</div><div class="ct">Refer &amp; Earn</div><div class="cs">বন্ধু invite করে reward নিন।</div></button>
+</div>
+<div class="title">Community</div>
+<button class="join" onclick="join()">📢 জয়েন করুন</button>
+</section>
+<section class="page" id="earn">
+<div class="title">🎁 Watch &amp; Earn</div>
+<div class="panel">
+<div class="panelHead"><b>Rewarded Advertisement</b><span class="muted">Left: <b id="adLeft">50</b></span></div>
+<p class="muted">সম্পূর্ণ rewarded ad দেখলে reward যোগ হবে।</p><br/>
+<button class="adbtn" id="adBtn" onclick="watchAd()">🎬 Watch Ad</button>
+</div>
+</section>
+<section class="page" id="spin">
+<div class="title">🎡 Lucky Spin</div>
+<div class="panel wheelBox">
+<div class="muted">আজকের Spin বাকি: <b id="spinLeft">1</b></div>
+<div class="wheelWrap">
+<div class="pointer"></div>
+<div class="wheel" id="wheel">
+<div class="wheelLabels" id="wheelLabels"></div>
+</div>
+</div>
+<button class="spinBtn" id="spinBtn" onclick="spin()">SPIN NOW</button>
+<div class="result" id="spinResult"></div>
+</div>
+</section>
+<section class="page" id="withdraw">
+<div class="title">💸 Withdraw</div>
+<div class="panel">
+<label>Payment Method</label>
+<select id="method"><option value="">Select method</option><option>bKash</option><option>Nagad</option><option>Rocket</option></select>
+<label>Account Number</label><input id="number" inputmode="numeric" placeholder="01XXXXXXXXX"/>
+<label>Amount (BDT)</label><input id="amount" placeholder="50" type="number"/>
+<br/><br/><button class="withdraw" onclick="withdraw()">💸 Withdraw Request</button>
+</div>
+<div class="title">📜 History</div>
+<div class="panel history" id="history"><div class="muted">No withdrawal yet.</div></div>
+</section>
+<section class="page" id="ref">
+<div class="title">👥 Refer &amp; Earn</div>
+<div class="panel">
+<b>Your referral link</b>
+<p class="muted" id="refLink" style="word-break:break-all;margin-top:10px"></p>
+<br/><button class="join" onclick="copyRef()">📋 Copy Link</button>
+</div>
+</section>
+<section class="page" id="profile">
+<div class="title">👤 Profile</div>
+<div class="panel">
+<div class="row"><span>Name</span><b id="name">Guest</b></div>
+<div class="row"><span>Telegram ID</span><b id="uid">—</b></div>
+<div class="row"><span>Balance</span><b id="pbal">0.00 BDT</b></div>
+</div>
+</section>
+</div>
+<div class="nav"><div class="navin">
+<button class="active" onclick="go('home',this)"><b>🏠</b>Home</button>
+<button onclick="go('earn',this)"><b>🎁</b>Earn</button>
+<button onclick="go('withdraw',this)"><b>💸</b>Withdraw</button>
+<button onclick="go('profile',this)"><b>👤</b>Profile</button>
+</div></div>
 
-<div id="toast" class="toast"></div>
 
-        <script>
+<div class="toast" id="toast"></div>
+<script>
 "use strict";
 
 const FIREBASE_DB_URL = "https://takar-hat-default-rtdb.firebaseio.com";
-const OWNER_PIN = "Taka@890";
-
 const DEFAULT_SETTINGS = {
   adReward: 0.02,
   adLimit: 50,
@@ -922,158 +837,10 @@ async function copyRef(){try{await navigator.clipboard.writeText(document.getEle
 window.join=join;window.copyRef=copyRef;
 
 /* =========================================================
-   OWNER PANEL
-========================================================= */
-
-function openOwnerGate(){
-  const m=document.getElementById("ownerModal");
-  m.classList.add("show");
-  document.getElementById("ownerPinBox").style.display="block";
-  document.getElementById("ownerSettingsBox").style.display="none";
-  document.getElementById("ownerPinInput").value="";
-  document.getElementById("ownerPinError").textContent="";
-  setTimeout(()=>document.getElementById("ownerPinInput").focus(),50);
-}
-
-function closeOwnerPanel(){
-  document.getElementById("ownerModal").classList.remove("show");
-}
-
-function ownerFill(){
-  document.getElementById("ownerAdReward").value=settings.adReward;
-  document.getElementById("ownerAdLimit").value=settings.adLimit;
-  document.getElementById("ownerDailyBonus").value=settings.dailyBonus;
-  document.getElementById("ownerSpinLimit").value=settings.spinLimit;
-  document.getElementById("ownerMin").value=settings.min;
-  document.getElementById("ownerChannel").value=settings.channel;
-  document.getElementById("ownerBlock").value=settings.adsgramBlockId;
-  document.getElementById("ownerBkash").checked=settings.payment.bKash.enabled;
-  document.getElementById("ownerNagad").checked=settings.payment.Nagad.enabled;
-  document.getElementById("ownerRocket").checked=settings.payment.Rocket.enabled;
-  ownerRewards();
-}
-
-function ownerRewards(){
-  const box=document.getElementById("ownerRewards");
-  box.innerHTML=settings.spinRewards.map((r,i)=>
-    '<div class="ownerRow">'+
-      '<div><div class="ownerMiniLabel">Amount (৳)</div><input type="number" step="0.01" value="'+r.amount+'" data-ra="'+i+'"></div>'+
-      '<div><div class="ownerMiniLabel">Chance (%)</div><input type="number" step="0.01" value="'+r.chance+'" data-rc="'+i+'"></div>'+
-      '<button class="ownerSpinRemove" type="button" onclick="ownerRemoveReward('+i+')">×</button>'+
-    '</div>'
-  ).join("");
-  box.querySelectorAll("[data-ra]").forEach(e=>e.oninput=()=>settings.spinRewards[Number(e.dataset.ra)].amount=Math.max(0,Number(e.value)||0));
-  box.querySelectorAll("[data-rc]").forEach(e=>e.oninput=()=>settings.spinRewards[Number(e.dataset.rc)].chance=Math.max(0,Number(e.value)||0));
-}
-
-function ownerAddReward(){
-  settings.spinRewards.push({amount:0.10,chance:0});
-  ownerRewards();
-}
-
-function ownerRemoveReward(i){
-  if(settings.spinRewards.length<=1){toast("কমপক্ষে ১টি reward রাখুন");return;}
-  settings.spinRewards.splice(i,1);
-  ownerRewards();
-}
-
-function setOwnerStatus(text){
-  const el=document.getElementById("ownerCloudStatus");
-  if(el)el.textContent=text;
-}
-
-async function ownerSaveSettings(){
-  const current={
-    adReward:document.getElementById("ownerAdReward").value,
-    adLimit:document.getElementById("ownerAdLimit").value,
-    dailyBonus:document.getElementById("ownerDailyBonus").value,
-    spinLimit:document.getElementById("ownerSpinLimit").value,
-    min:document.getElementById("ownerMin").value,
-    spinRewards:settings.spinRewards,
-    channel:document.getElementById("ownerChannel").value.trim(),
-    adsgramBlockId:document.getElementById("ownerBlock").value.trim(),
-    payment:{
-      bKash:{enabled:document.getElementById("ownerBkash").checked,min:settings.payment.bKash.min},
-      Nagad:{enabled:document.getElementById("ownerNagad").checked,min:settings.payment.Nagad.min},
-      Rocket:{enabled:document.getElementById("ownerRocket").checked,min:settings.payment.Rocket.min}
-    }
-  };
-  const total=current.spinRewards.reduce((a,r)=>a+Number(r.chance||0),0);
-  if(Math.abs(total-100)>0.001){
-    setOwnerStatus("Spin chance মোট 100% হতে হবে. এখন "+total.toFixed(2)+"%");
-    toast("Spin chance 100% করুন");
-    return;
-  }
-  settings=normalizeSettings(current);
-  safeSet("takaHatSettings",JSON.stringify(settings));
-  render();
-  setOwnerStatus("Saving to Firebase…");
-  try{
-    await fbPut("settings",settingsForCloud(settings));
-    setOwnerStatus("Cloud status: Saved globally ✓");
-    adsgramController=null;
-    initAdsgram();
-    toast("Settings globally saved");
-  }catch(e){
-    console.warn(e);
-    setOwnerStatus("Cloud save failed — Firebase rules/check করুন");
-    toast("Firebase save হয়নি");
-  }
-}
-
-async function ownerRefreshFromCloud(){
-  setOwnerStatus("Refreshing…");
-  try{
-    const r=await fbGet("settings");
-    if(r && typeof r === "object"){
-      settings=normalizeSettings(r);
-      safeSet("takaHatSettings",JSON.stringify(settings));
-      ownerFill();
-      render();
-      initAdsgram();
-      setOwnerStatus("Cloud status: Connected ✓");
-    }else{
-      setOwnerStatus("No cloud settings found");
-    }
-  }catch(e){
-    setOwnerStatus("Cloud read failed");
-  }
-}
-
-function unlockOwnerPanel(){
-  const input=document.getElementById("ownerPinInput");
-  if(String(input.value||"")!==OWNER_PIN){
-    document.getElementById("ownerPinError").textContent="PIN ভুল হয়েছে";
-    return;
-  }
-  document.getElementById("ownerPinError").textContent="";
-  document.getElementById("ownerPinBox").style.display="none";
-  document.getElementById("ownerSettingsBox").style.display="block";
-  ownerFill();
-  ownerRefreshFromCloud();
-}
-
-window.openOwnerGate=openOwnerGate;
-window.closeOwnerPanel=closeOwnerPanel;
-window.unlockOwnerPanel=unlockOwnerPanel;
-window.ownerAddReward=ownerAddReward;
-window.ownerRemoveReward=ownerRemoveReward;
-window.ownerSaveSettings=ownerSaveSettings;
-window.ownerRefreshFromCloud=ownerRefreshFromCloud;
-
-/* =========================================================
    EVENTS / BOOT
 ========================================================= */
 
 document.getElementById("method")?.addEventListener("change",render);
-
-document.addEventListener("keydown",e=>{
-  if(
-    e.key==="Enter" &&
-    document.getElementById("ownerModal")?.classList.contains("show") &&
-    document.getElementById("ownerSettingsBox")?.style.display==="none"
-  )unlockOwnerPanel();
-});
 
 window.addEventListener("storage",e=>{
   if(e.key==="takaHatSettings"){
@@ -1120,6 +887,5 @@ async function boot(){
 
 boot();
 </script>
-      
 </body>
 </html>
