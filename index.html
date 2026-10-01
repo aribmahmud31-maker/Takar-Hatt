@@ -913,6 +913,11 @@ function loadSettings(){
 
     if(!Array.isArray(merged.spinRewards) || !merged.spinRewards.length){
       merged.spinRewards = JSON.parse(JSON.stringify(DEFAULT_SETTINGS.spinRewards));
+    } else {
+      merged.spinRewards = merged.spinRewards.map(function(item){
+        if(item && typeof item === "object") return {amount:Number(item.amount ?? item.reward ?? 0),chance:Number(item.chance ?? 0)};
+        return {amount:Number(item || 0),chance:0};
+      });
     }
 
     return merged;
@@ -1010,7 +1015,8 @@ async function syncCloudSettings(){
     const remote = await thFbGet("settings");
     if(remote && typeof remote === "object"){
       settings = Object.assign({}, DEFAULT_SETTINGS, remote);
-      if(!Array.isArray(settings.spinRewards) || !settings.spinRewards.length){
+      settings.spinRewards = normalizeSpinRewards(settings.spinRewards);
+      if(!settings.spinRewards.length){
         settings.spinRewards = JSON.parse(JSON.stringify(DEFAULT_SETTINGS.spinRewards));
       }
       localStorage.setItem("takaHatSettings",JSON.stringify(settings));
@@ -1111,7 +1117,7 @@ function renderWheelLabels(){
   const box = document.getElementById("th-wheel-labels");
   if(!box) return;
 
-  const rewards = settings.spinRewards || [];
+  const rewards = normalizeSpinRewards(settings.spinRewards);
   const count = Math.max(1,rewards.length);
 
   box.innerHTML = rewards.map(function(reward,index){
@@ -1125,10 +1131,21 @@ function renderWheelLabels(){
   }).join("");
 }
 
-function weightedReward(){
-  const rewards = (settings.spinRewards || []).filter(function(reward){
-    return Number(reward.chance) > 0;
+function normalizeSpinRewards(list){
+  if(!Array.isArray(list) || !list.length) return JSON.parse(JSON.stringify(DEFAULT_SETTINGS.spinRewards));
+  return list.map(function(item){
+    if(item && typeof item === "object") return {
+      amount:Number(item.amount ?? item.reward ?? 0),
+      chance:Number(item.chance ?? 0)
+    };
+    return {amount:Number(item || 0),chance:0};
+  }).filter(function(item){
+    return Number.isFinite(item.amount) && item.amount >= 0 && Number.isFinite(item.chance) && item.chance > 0;
   });
+}
+
+function weightedReward(){
+  const rewards = normalizeSpinRewards(settings.spinRewards);
 
   if(!rewards.length) return {amount:0,chance:100};
 
