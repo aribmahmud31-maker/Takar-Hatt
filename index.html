@@ -62,6 +62,14 @@
     .navin{max-width:520px;height:100%;margin:auto;display:grid;grid-template-columns:repeat(4,1fr)}
     .nav button{background:none;color:#ffffff70;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:10px}.nav button b{font-size:21px}.nav .active{color:#ffd75a}
     .page{display:none}.page.active{display:block}
+
+    .countryModal{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:22px;background:#000b;backdrop-filter:blur(7px)}
+    .countryModal.show{display:flex}
+    .countryBox{width:min(100%,430px);background:linear-gradient(145deg,#103f30,#062319);border:1px solid #ffffff22;border-radius:24px;padding:25px 20px;text-align:center;box-shadow:0 20px 60px #000b}
+    .countryIcon{font-size:52px;margin-bottom:10px}
+    .countryTitle{font-size:22px;font-weight:950;color:#ffd75a;margin-bottom:10px}
+    .countryText{font-size:14px;line-height:1.6;opacity:.9;margin-bottom:18px;white-space:pre-wrap}
+    .countryClose{width:100%;padding:13px;border-radius:14px;background:linear-gradient(145deg,#19aa78,#08724f);color:#fff;font-weight:900}
     .toast{position:fixed;z-index:100;left:50%;bottom:88px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#111e;border:1px solid #ffffff20;padding:11px 15px;border-radius:12px;font-size:12px;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
   
 
@@ -157,6 +165,15 @@
 </div></div>
 
 
+
+<div class="countryModal" id="countryModal">
+  <div class="countryBox">
+    <div class="countryIcon">🌍</div>
+    <div class="countryTitle">Country Not Allowed</div>
+    <div class="countryText" id="countryWarningText">এই country থেকে task ব্যবহার করা যাবে না।</div>
+    <button class="countryClose" onclick="document.getElementById('countryModal').classList.remove('show')">ঠিক আছে</button>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 <script>
 "use strict";
@@ -688,7 +705,7 @@ async function checkCountry(){
 }
 
 function requireTaskCountry(){
-  if(countryAllowed===false){updateTaskGate();toast("এই task আপনার country-এর জন্য allowed নয়");return false;}
+  if(countryAllowed===false){updateTaskGate();return false;}
   if(countryAllowed===null){toast("Country check চলছে, একটু পরে চেষ্টা করুন");return false;}
   return true;
 }
