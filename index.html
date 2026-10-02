@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
 <meta content="#061f17" name="theme-color"/>
-<title>Taka Hat</title>
+<title id="pageTitle">Takar Hat</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
 <style>
@@ -80,44 +80,44 @@
 <div id="th-announcement" style="display:none"></div>
 <div class="top">
 <div class="brand">
-<div class="brandIcon">🪙</div>
-<div><div class="brandName">টাকার হাট</div><div class="brandSub">Earn • Rewards • Wallet</div></div>
+<div class="brandIcon" id="brandIcon">🪙</div>
+<div><div class="brandName" id="brandName">টাকার হাট</div><div class="brandSub" id="brandSub">Earn • Rewards • Wallet</div></div>
 </div>
-<button class="bell" onclick="toast('Notifications')">🔔</button>
+<button class="bell" id="notifyBtn" onclick="toast(settings.userUI.notificationToast)">🔔</button>
 </div>
 <section class="page active" id="home">
 <div class="hero">
-<div class="eyebrow">Available balance • BDT • Active</div>
-<div class="money">৳ <b id="bal">0.00</b> BDT</div>
-<div class="today">Today: ৳ <span id="todayEarn">0.00</span></div>
+<div class="eyebrow" id="balanceEyebrow">Available balance • BDT • Active</div>
+<div class="money">৳ <b id="bal">0.00</b> <span id="balanceCurrency">BDT</span></div>
+<div class="today"><span id="todayLabel">Today</span>: ৳ <span id="todayEarn">0.00</span></div>
 <div class="stats">
-<div class="stat"><strong id="ads">0</strong><span>Ads today</span></div>
-<div class="stat"><strong id="refs">0</strong><span>Referrals</span></div>
-<div class="stat"><strong id="streak">0</strong><span>Streak</span></div>
+<div class="stat"><strong id="ads">0</strong><span id="adsTodayLabel">Ads today</span></div>
+<div class="stat"><strong id="refs">0</strong><span id="referralsLabel">Referrals</span></div>
+<div class="stat"><strong id="streak">0</strong><span id="streakLabel">Streak</span></div>
 </div>
 </div>
-<div class="title">Quick earn</div>
+<div class="title" id="quickEarnTitle">Quick earn</div>
 <div class="grid">
-<button class="card" onclick="go('earn')"><div class="icon">🎁</div><div class="ct">Watch &amp; Earn</div><div class="cs">Rewarded ad সম্পূর্ণ করে reward নিন।</div><div class="limit"><span>Today limit</span><b id="adRemain">50</b></div></button>
-<button class="card" onclick="go('spin')"><div class="icon">🎡</div><div class="ct">Lucky Spin</div><div class="cs">Daily spin chance ব্যবহার করুন।</div><div class="limit"><span>Spins left</span><b id="spinRemain">1</b></div></button>
-<button class="card" onclick="checkin()"><div class="icon">🎁</div><div class="ct">Daily Check-in</div><div class="cs">প্রতিদিন একবার bonus claim করুন।</div></button>
-<button class="card" onclick="go('ref')"><div class="icon">👥</div><div class="ct">Refer &amp; Earn</div><div class="cs">বন্ধু invite করে reward নিন।</div></button>
+<button class="card" onclick="go('earn')"><div class="icon" id="watchIcon">🎁</div><div class="ct" id="watchTitle">Watch &amp; Earn</div><div class="cs" id="watchDesc">Rewarded ad সম্পূর্ণ করে reward নিন।</div><div class="limit"><span id="watchLimitLabel">Today limit</span><b id="adRemain">50</b></div></button>
+<button class="card" onclick="go('spin')"><div class="icon" id="spinIcon">🎡</div><div class="ct" id="spinTitle">Lucky Spin</div><div class="cs" id="spinDesc">Daily spin chance ব্যবহার করুন।</div><div class="limit"><span id="spinLeftLabel">Spins left</span><b id="spinRemain">1</b></div></button>
+<button class="card" onclick="checkin()"><div class="icon" id="checkinIcon">🎁</div><div class="ct" id="checkinTitle">Daily Check-in</div><div class="cs" id="checkinDesc">প্রতিদিন একবার bonus claim করুন।</div></button>
+<button class="card" onclick="go('ref')"><div class="icon" id="referIcon">👥</div><div class="ct" id="referTitle">Refer &amp; Earn</div><div class="cs" id="referDesc">বন্ধু invite করে reward নিন।</div></button>
 </div>
-<div class="title">Community</div>
-<button class="join" onclick="join()">📢 জয়েন করুন</button>
+<div class="title" id="communityTitle">Community</div>
+<button class="join" onclick="join()"><span id="communityIcon">📢</span> <span id="communityButton">জয়েন করুন</span></button>
 </section>
 <section class="page" id="earn">
-<div class="title">🎁 Watch &amp; Earn</div>
+<div class="title"><span id="earnPageIcon">🎁</span> <span id="earnPageTitle">Watch &amp; Earn</span></div>
 <div class="panel">
-<div class="panelHead"><b>Rewarded Advertisement</b><span class="muted">Left: <b id="adLeft">50</b></span></div>
-<p class="muted">সম্পূর্ণ rewarded ad দেখলে reward যোগ হবে।</p><br/>
-<button class="adbtn" id="adBtn" onclick="watchAd()">🎬 Watch Ad</button>
+<div class="panelHead"><b id="rewardedTitle">Rewarded Advertisement</b><span class="muted"><span id="leftLabel">Left</span>: <b id="adLeft">50</b></span></div>
+<p class="muted" id="earnDescription">সম্পূর্ণ rewarded ad দেখলে reward যোগ হবে।</p><br/>
+<button class="adbtn" id="adBtn" onclick="watchAd()"><span id="watchAdIcon">🎬</span> <span id="watchAdButton">Watch Ad</span></button>
 </div>
 </section>
 <section class="page" id="spin">
-<div class="title">🎡 Lucky Spin</div>
+<div class="title"><span id="spinPageIcon">🎡</span> <span id="spinPageTitle">Lucky Spin</span></div>
 <div class="panel wheelBox">
-<div class="muted">আজকের Spin বাকি: <b id="spinLeft">1</b></div>
+<div class="muted"><span id="spinTodayLabel">আজকের Spin বাকি</span>: <b id="spinLeft">1</b></div>
 <div class="wheelWrap">
 <div class="pointer"></div>
 <div class="wheel" id="wheel">
@@ -129,49 +129,49 @@
 </div>
 </section>
 <section class="page" id="withdraw">
-<div class="title">💸 Withdraw</div>
+<div class="title"><span id="withdrawPageIcon">💸</span> <span id="withdrawPageTitle">Withdraw</span></div>
 <div class="panel">
 <label>Payment Method</label>
 <select id="method"><option value="">Select method</option><option>bKash</option><option>Nagad</option><option>Rocket</option></select>
-<label>Account Number</label><input id="number" inputmode="numeric" placeholder="01XXXXXXXXX"/>
-<label>Amount (BDT)</label><input id="amount" placeholder="50" type="number"/>
-<br/><br/><button class="withdraw" onclick="withdraw()">💸 Withdraw Request</button>
+<label id="accountNumberLabel">Account Number</label><input id="number" inputmode="numeric" placeholder="01XXXXXXXXX"/>
+<label id="amountLabel">Amount (BDT)</label><input id="amount" placeholder="50" type="number"/>
+<br/><br/><button class="withdraw" onclick="withdraw()"><span id="withdrawButtonIcon">💸</span> <span id="withdrawButton">Withdraw Request</span></button>
 </div>
-<div class="title">📜 History</div>
-<div class="panel history" id="history"><div class="muted">No withdrawal yet.</div></div>
+<div class="title"><span>📜</span> <span id="historyTitle">History</span></div>
+<div class="panel history" id="history"><div class="muted" id="historyEmpty">No withdrawal yet.</div></div>
 </section>
 <section class="page" id="ref">
-<div class="title">👥 Refer &amp; Earn</div>
+<div class="title"><span id="refPageIcon">👥</span> <span id="refPageTitle">Refer &amp; Earn</span></div>
 <div class="panel">
-<b>Your referral link</b>
+<b id="referralLinkLabel">Your referral link</b>
 <p class="muted" id="refLink" style="word-break:break-all;margin-top:10px"></p>
-<br/><button class="join" onclick="copyRef()">📋 Copy Link</button>
+<br/><button class="join" onclick="copyRef()"><span id="copyLinkIcon">📋</span> <span id="copyLinkButton">Copy Link</span></button>
 </div>
 </section>
 <section class="page" id="profile">
-<div class="title">👤 Profile</div>
+<div class="title"><span id="profilePageIcon">👤</span> <span id="profilePageTitle">Profile</span></div>
 <div class="panel">
-<div class="row"><span>Name</span><b id="name">Guest</b></div>
-<div class="row"><span>Telegram ID</span><b id="uid">—</b></div>
-<div class="row"><span>Balance</span><b id="pbal">0.00 BDT</b></div>
+<div class="row"><span id="profileNameLabel">Name</span><b id="name">Guest</b></div>
+<div class="row"><span id="profileTelegramLabel">Telegram ID</span><b id="uid">—</b></div>
+<div class="row"><span id="profileBalanceLabel">Balance</span><b id="pbal">0.00 BDT</b></div>
 </div>
 </section>
 </div>
 <div class="nav"><div class="navin">
-<button class="active" onclick="go('home',this)"><b>🏠</b>Home</button>
-<button onclick="go('earn',this)"><b>🎁</b>Earn</button>
-<button onclick="go('withdraw',this)"><b>💸</b>Withdraw</button>
-<button onclick="go('profile',this)"><b>👤</b>Profile</button>
+<button class="active" onclick="go('home',this)"><b id="navHomeIcon">🏠</b><span id="navHome">Home</span></button>
+<button onclick="go('earn',this)"><b id="navEarnIcon">🎁</b><span id="navEarn">Earn</span></button>
+<button onclick="go('withdraw',this)"><b id="navWithdrawIcon">💸</b><span id="navWithdraw">Withdraw</span></button>
+<button onclick="go('profile',this)"><b id="navProfileIcon">👤</b><span id="navProfile">Profile</span></button>
 </div></div>
 
 
 
 <div class="countryModal" id="countryModal">
   <div class="countryBox">
-    <div class="countryIcon">🌍</div>
-    <div class="countryTitle">Warning</div>
+    <div class="countryIcon" id="countryIcon">🌍</div>
+    <div class="countryTitle" id="countryTitle">Warning</div>
     <div class="countryText" id="countryWarningText">এই country থেকে task ব্যবহার করা যাবে না।</div>
-    <button class="countryClose" onclick="document.getElementById('countryModal').classList.remove('show')">ঠিক আছে</button>
+    <button class="countryClose" id="countryClose" onclick="document.getElementById('countryModal').classList.remove('show')">ঠিক আছে</button>
   </div>
 </div>
 <div class="toast" id="toast"></div>
@@ -179,6 +179,7 @@
 "use strict";
 
 const FIREBASE_DB_URL = "https://takar-hat-default-rtdb.firebaseio.com";
+const DEFAULT_USER_UI = {"appTitle":"Taka Hat","brandIcon":"🪙","brandName":"টাকার হাট","brandSub":"Earn • Rewards • Wallet","notificationIcon":"🔔","notificationToast":"Notifications","balanceLabel":"Available balance","currencyLabel":"BDT","activeLabel":"Active","todayLabel":"Today","adsTodayLabel":"Ads today","referralsLabel":"Referrals","streakLabel":"Streak","quickEarnTitle":"Quick earn","watchIcon":"🎁","watchTitle":"Watch & Earn","watchDesc":"Rewarded ad সম্পূর্ণ করে reward নিন।","watchLimitLabel":"Today limit","spinIcon":"🎡","spinTitle":"Lucky Spin","spinDesc":"Daily spin chance ব্যবহার করুন।","spinLeftLabel":"Spins left","checkinIcon":"🎁","checkinTitle":"Daily Check-in","checkinDesc":"প্রতিদিন একবার bonus claim করুন।","referIcon":"👥","referTitle":"Refer & Earn","referDesc":"বন্ধু invite করে reward নিন।","communityTitle":"Community","communityIcon":"📢","communityButton":"জয়েন করুন","earnPageIcon":"🎁","earnPageTitle":"Watch & Earn","rewardedTitle":"Rewarded Advertisement","leftLabel":"Left","earnDescription":"সম্পূর্ণ rewarded ad দেখলে reward যোগ হবে।","watchAdIcon":"🎬","watchAdButton":"Watch Ad","spinPageIcon":"🎡","spinPageTitle":"Lucky Spin","spinTodayLabel":"আজকের Spin বাকি","spinButton":"SPIN NOW","spinRunningText":"🎡 Spin চলছে… ৳{amount} reward already added","spinResultText":"🎉 আপনি পেয়েছেন ৳{amount}","withdrawPageIcon":"💸","withdrawPageTitle":"Withdraw","paymentMethodLabel":"Payment Method","selectMethod":"Select method","accountNumberLabel":"Account Number","accountPlaceholder":"01XXXXXXXXX","amountLabel":"Amount (BDT)","amountPlaceholder":"50","withdrawButtonIcon":"💸","withdrawButton":"Withdraw Request","historyTitle":"History","historyEmpty":"No withdrawal yet.","refPageIcon":"👥","refPageTitle":"Refer & Earn","referralLinkLabel":"Your referral link","copyLinkIcon":"📋","copyLinkButton":"Copy Link","profilePageIcon":"👤","profilePageTitle":"Profile","profileNameLabel":"Name","profileTelegramLabel":"Telegram ID","profileBalanceLabel":"Balance","navHomeIcon":"🏠","navHome":"Home","navEarnIcon":"🎁","navEarn":"Earn","navWithdrawIcon":"💸","navWithdraw":"Withdraw","navProfileIcon":"👤","navProfile":"Profile","countryIcon":"🌍","countryTitle":"Warning","countryClose":"ঠিক আছে","bkashLabel":"bKash","nagadLabel":"Nagad","rocketLabel":"Rocket","pendingStatus":"PENDING","completedStatus":"COMPLETED","rejectedStatus":"REJECTED"};
 const DEFAULT_SETTINGS = {
   adReward: 0.02,
   adLimit: 50,
@@ -198,6 +199,7 @@ const DEFAULT_SETTINGS = {
   announcement:"",
   allowedCountry:"US",
   countryWarning:"শুধুমাত্র United States (USA) থেকে আসা users এই task ব্যবহার করতে পারবেন। আপনার country অনুমোদিত নয়।",
+  userUI:clone(DEFAULT_USER_UI),
   payment:{
     bKash:{enabled:true,min:50},
     Nagad:{enabled:true,min:50},
@@ -345,6 +347,7 @@ function normalizeSettings(raw){
     announcement:String(x.announcement ?? x.announcement_text ?? ""),
     allowedCountry:String(x.allowedCountry ?? x.allowed_country ?? DEFAULT_SETTINGS.allowedCountry).trim().toUpperCase()||"US",
     countryWarning:String(x.countryWarning ?? x.country_warning ?? DEFAULT_SETTINGS.countryWarning),
+    userUI:{...clone(DEFAULT_USER_UI),...(x.userUI ?? x.user_ui ?? {})},
     payment:normalizePayment(x.payment ?? x.payment_methods)
   };
 }
@@ -364,6 +367,8 @@ function settingsForCloud(s){
     announcement:x.announcement,
     allowedCountry:x.allowedCountry,
     countryWarning:x.countryWarning,
+    userUI:x.userUI,
+    user_ui:x.userUI,
     payment:x.payment,
     ad_reward:x.adReward,
     daily_ad_limit:x.adLimit,
@@ -614,8 +619,22 @@ function updateProfile(){
   const ref=document.getElementById("refLink");
   if(n)n.textContent=data.name||"Guest";
   if(id)id.textContent=data.telegramId||data.uid||"—";
-  if(p)p.textContent=money(data.balance)+" BDT";
+  if(p)p.textContent=money(data.balance)+" "+(settings.userUI?.currencyLabel||"BDT");
   if(ref)ref.textContent="https://t.me/TakarHat_Bot/app?startapp=ref_"+(data.telegramId||data.uid||"USER_ID");
+}
+
+function applyUserUI(){
+  const u=settings.userUI||DEFAULT_USER_UI;
+  const set=(id,value)=>{const e=document.getElementById(id);if(e)e.textContent=value==null?"":String(value)};
+  const ph=(id,value)=>{const e=document.getElementById(id);if(e)e.placeholder=value==null?"":String(value)};
+  document.title=String(u.appTitle||DEFAULT_USER_UI.appTitle);
+  set("pageTitle",u.appTitle); // harmless if title element supports textContent
+  set("brandIcon",u.brandIcon);set("brandName",u.brandName);set("brandSub",u.brandSub);
+  set("notifyBtn",u.notificationIcon);set("balanceEyebrow",`${u.balanceLabel} • ${u.currencyLabel} • ${u.activeLabel}`);
+  set("balanceCurrency",u.currencyLabel);set("todayLabel",u.todayLabel);set("adsTodayLabel",u.adsTodayLabel);set("referralsLabel",u.referralsLabel);set("streakLabel",u.streakLabel);
+  set("quickEarnTitle",u.quickEarnTitle);
+  ["watchIcon","watchTitle","watchDesc","watchLimitLabel","spinIcon","spinTitle","spinDesc","spinLeftLabel","checkinIcon","checkinTitle","checkinDesc","referIcon","referTitle","referDesc","communityTitle","communityIcon","communityButton","earnPageIcon","earnPageTitle","rewardedTitle","leftLabel","earnDescription","watchAdIcon","watchAdButton","spinPageIcon","spinPageTitle","spinTodayLabel","withdrawPageIcon","withdrawPageTitle","paymentMethodLabel","accountNumberLabel","amountLabel","withdrawButtonIcon","withdrawButton","historyTitle","historyEmpty","refPageIcon","refPageTitle","referralLinkLabel","copyLinkIcon","copyLinkButton","profilePageIcon","profilePageTitle","profileNameLabel","profileTelegramLabel","profileBalanceLabel","navHomeIcon","navHome","navEarnIcon","navEarn","navWithdrawIcon","navWithdraw","navProfileIcon","navProfile","countryIcon","countryTitle","countryClose"].forEach(k=>set(k,u[k]));
+  ph("number",u.accountPlaceholder);ph("amount",u.amountPlaceholder);
 }
 
 function renderPaymentMethods(){
@@ -623,7 +642,8 @@ function renderPaymentMethods(){
   if(!s)return;
   const old=s.value;
   const list=["bKash","Nagad","Rocket"].filter(m=>settings.payment?.[m]?.enabled!==false);
-  s.innerHTML='<option value="">Select method</option>'+list.map(m=>'<option value="'+m+'">'+m+'</option>').join("");
+  const labels={bKash:settings.userUI?.bkashLabel||"bKash",Nagad:settings.userUI?.nagadLabel||"Nagad",Rocket:settings.userUI?.rocketLabel||"Rocket"};
+  s.innerHTML='<option value="">'+escapeHtml(settings.userUI?.selectMethod||"Select method")+'</option>'+list.map(m=>'<option value="'+m+'">'+escapeHtml(labels[m])+'</option>').join("");
   if(list.includes(old))s.value=old;
 }
 
@@ -657,14 +677,16 @@ function renderHistory(){
   const h=document.getElementById("history");
   if(!h)return;
   if(!Array.isArray(data.history)||!data.history.length){
-    h.innerHTML='<div class="muted">No withdrawal yet.</div>';
+    h.innerHTML='<div class="muted">'+escapeHtml(settings.userUI?.historyEmpty||"No withdrawal yet.")+'</div>';
     return;
   }
-  h.innerHTML=data.history.map(x=>'<div class="row"><span>'+escapeHtml(x.method||"")+'<br><small>'+escapeHtml(x.number||"")+'</small></span><span>৳'+money(x.amount)+'<br><span class="status">'+escapeHtml(x.status||"PENDING")+'</span></span></div>').join("");
+  const statusLabel=(st)=>{const k=String(st||"PENDING").toUpperCase();return k==="COMPLETED"?(settings.userUI?.completedStatus||"COMPLETED"):k==="REJECTED"?(settings.userUI?.rejectedStatus||"REJECTED"):(settings.userUI?.pendingStatus||"PENDING")};
+  h.innerHTML=data.history.map(x=>'<div class="row"><span>'+escapeHtml(x.method||"")+'<br><small>'+escapeHtml(x.number||"")+'</small></span><span>৳'+money(x.amount)+'<br><span class="status">'+escapeHtml(statusLabel(x.status))+'</span></span></div>').join("");
 }
 
 function render(){
   resetDailyIfNeeded();
+  applyUserUI();
   const bal=document.getElementById("bal");if(bal)bal.textContent=money(data.balance);
   const today=document.getElementById("todayEarn");if(today)today.textContent=money(data.today);
   const ads=document.getElementById("ads");if(ads)ads.textContent=Number(data.ads||0);
@@ -826,12 +848,12 @@ async function spin(){
   const delta=(target-current+360)%360;
   spinRotation+=1800+delta+Math.floor(Math.random()*20);
 
-  if(result)result.textContent="🎡 Spin চলছে… ৳"+money(amount)+" reward already added";
+  if(result)result.textContent=(settings.userUI?.spinRunningText||DEFAULT_USER_UI.spinRunningText).replace(/\{amount\}/g,money(amount));
   if(wheel)wheel.style.transform="rotate("+spinRotation+"deg)";
 
   setTimeout(()=>{
     spinBusy=false;
-    if(result)result.textContent="🎉 আপনি পেয়েছেন ৳"+money(amount);
+    if(result)result.textContent=(settings.userUI?.spinResultText||DEFAULT_USER_UI.spinResultText).replace(/\{amount\}/g,money(amount));
     render();
     toast("🎉 ৳"+money(amount)+" balance-এ যোগ হয়েছে");
   },4250);
