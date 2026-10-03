@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
 <meta content="#061f17" name="theme-color"/>
-<title id="pageTitle">Takar Hat</title>
+<title id="pageTitle">Taka Hat</title>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script src="https://sad.adsgram.ai/js/sad.min.js"></script>
 <style>
@@ -791,8 +791,7 @@ async function checkin(){
   if(data.dailyClaim===todayBD()){toast("আজকের Daily Check-in already claimed");return;}
   const r=Number(settings.dailyBonus||0);
   if(r<=0){toast("Admin থেকে Daily Bonus সেট করা হয়নি");return;}
-  const ok=await showRewardedAd();
-  if(!ok)return;
+  // Daily Check-in is available without requiring a rewarded ad.
   data.dailyClaim=todayBD();
   data.balance=Number(data.balance||0)+r;
   data.today=Number(data.today||0)+r;
@@ -822,10 +821,7 @@ async function spin(){
   const reward=weightedReward();
   if(!reward){toast("Admin থেকে Spin reward সেট করা হয়নি");return;}
 
-  const ok=await showRewardedAd();
-  if(!ok)return;
-
-  /* Ad fully finished -> reward is added immediately. */
+  /* Lucky Spin is available without requiring a rewarded ad. */
   const amount=Number(reward.amount||0);
   data.spins=Number(data.spins||0)+1;
   data.balance=Number(data.balance||0)+amount;
