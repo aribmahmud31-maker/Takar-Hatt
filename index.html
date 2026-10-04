@@ -21,10 +21,13 @@
     .brandIcon{width:48px;height:48px;border-radius:16px;background:linear-gradient(145deg,#ffe47a,#c99518);display:grid;place-items:center;font-size:25px;box-shadow:0 8px 22px #0007}
     .brandName{font-size:21px;font-weight:900}
     .brandSub{font-size:11px;opacity:.65;margin-top:3px}
-    .bell{width:43px;height:43px;border-radius:50%;background:#ffffff12;color:#ffd75a;font-size:20px}
-    .hero{position:relative;overflow:hidden;border:1px solid #ffffff18;border-radius:25px;padding:20px;background:linear-gradient(135deg,#0e9b6c,#07543d);box-shadow:0 16px 38px #0007}
-    .hero:after{content:"";position:absolute;width:190px;height:190px;border-radius:50%;right:-85px;top:-90px;background:#fff10}
-    .eyebrow{font-size:12px;opacity:.72}
+    .bell{width:48px;height:36px;border-radius:12px;background:#ffffff10;border:1px solid #ffffff18;color:#ffd75a;font-size:16px;font-weight:900;box-shadow:0 8px 20px #0004}
+    .hero{position:relative;overflow:hidden;border:1px solid #ffffff22;border-radius:28px;padding:20px;background:linear-gradient(145deg,#0b8060 0%,#07543d 55%,#052d21 100%);box-shadow:0 18px 42px #0008}
+    .hero:before{content:"";position:absolute;inset:auto -55px -95px auto;width:220px;height:220px;border-radius:50%;background:#ffd75a12;border:1px solid #ffd75a18}
+    .hero:after{content:"";position:absolute;width:155px;height:155px;border-radius:50%;right:-85px;top:-72px;background:#fff10;box-shadow:0 0 0 26px #ffffff06}
+    .heroTag{display:inline-flex;align-items:center;gap:7px;padding:6px 9px;border-radius:10px;background:#ffffff0e;border:1px solid #ffffff14;color:#e6fff4;font-size:10px;font-weight:800;letter-spacing:.3px}
+    .heroTag:before{content:"";width:6px;height:6px;border-radius:50%;background:#ffd75a;box-shadow:0 0 0 4px #ffd75a18}
+    .eyebrow{font-size:11px;opacity:.68;margin-top:14px}
     .money{font-size:36px;font-weight:950;margin-top:5px}
     .money b{color:#ffe066}
     .today{font-size:12px;opacity:.75;margin-top:5px}
@@ -32,13 +35,26 @@
     .stat{background:#ffffff10;border:1px solid #ffffff14;border-radius:16px;padding:11px 5px;text-align:center}
     .stat strong{display:block;font-size:15px}.stat span{font-size:10px;opacity:.62}
     .title{font-size:18px;font-weight:900;margin:22px 2px 10px}
+    .routeIntro{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:20px 2px 10px}
+    .routeIntro h3{margin:0;font-size:17px}.routeIntro p{margin:4px 0 0;font-size:10px;line-height:1.45;opacity:.58}
+    .routeMark{padding:7px 9px;border-radius:10px;background:#ffd75a14;border:1px solid #ffd75a26;color:#ffd75a;font-size:9px;font-weight:900;white-space:nowrap}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-    .card{min-height:135px;text-align:left;color:#fff;border-radius:21px;padding:16px;background:linear-gradient(145deg,#106d4f,#083e2e);border:1px solid #ffffff16;box-shadow:0 10px 25px #0005;transition:.15s}
+    .card{position:relative;min-height:142px;text-align:left;color:#fff;border-radius:22px;padding:16px;background:linear-gradient(145deg,#116b50,#073c2c);border:1px solid #ffffff18;box-shadow:0 12px 27px #0005;transition:transform .15s,box-shadow .15s,border-color .15s}
+    .card:before{content:"";position:absolute;left:0;top:0;width:48px;height:3px;border-radius:8px;background:#ffd75a8c}
+    .card:nth-child(2):before{background:#7fd7ff99}.card:nth-child(3):before{background:#b7ffbe99}.card:nth-child(4):before{background:#d8a4ff99}
+    .card:hover{box-shadow:0 16px 32px #0007;border-color:#ffffff24}
     .card:active{transform:scale(.975)}
     .icon{font-size:29px;margin-bottom:12px}.ct{font-size:15px;font-weight:900}.cs{font-size:11px;opacity:.62;margin-top:5px;line-height:1.4}
-    .limit{display:flex;justify-content:space-between;margin-top:11px;padding:7px 9px;border-radius:10px;background:#0003;font-size:10px}
-    .join{width:100%;padding:15px;border-radius:16px;background:linear-gradient(145deg,#199ce0,#09649b);color:#fff;font-weight:900;box-shadow:0 9px 20px #0004}
-    .panel{background:#ffffff0d;border:1px solid #ffffff14;border-radius:21px;padding:16px;margin-top:10px}
+    .limit{display:flex;justify-content:space-between;margin-top:11px;padding:7px 9px;border-radius:10px;background:#0004;border:1px solid #ffffff0b;font-size:10px}
+    .join{width:100%;padding:15px;border-radius:16px;background:linear-gradient(145deg,#19a878,#0b6e4e);color:#fff;font-weight:900;box-shadow:0 9px 20px #0004}
+    .panel{background:#ffffff0c;border:1px solid #ffffff14;border-radius:21px;padding:16px;margin-top:10px}
+    .featureGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:13px}
+    .featureCard{padding:11px 10px;border-radius:15px;background:#061f17b8;border:1px solid #ffffff10;min-height:86px}
+    .featureCard b{display:block;font-size:10px;letter-spacing:.3px;color:#ffd75a;margin-bottom:6px}
+    .featureCard span{font-size:9px;line-height:1.45;opacity:.58}
+    .adNotice{padding:12px;border-radius:15px;background:#0b4b38;border:1px solid #ffffff12;margin:12px 0 14px}
+    .adNotice strong{display:block;font-size:11px;margin-bottom:4px}.adNotice span{font-size:10px;line-height:1.45;opacity:.64}
+    .freeBadge{display:inline-flex;padding:5px 8px;border-radius:9px;background:#b7ffbe14;border:1px solid #b7ffbe25;color:#b7ffbe;font-size:9px;font-weight:900;margin-top:8px}
     .panelHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}
     .muted{font-size:11px;opacity:.62}
     .adbtn,.withdraw,.save{width:100%;padding:14px;border-radius:14px;background:linear-gradient(145deg,#19aa78,#08724f);color:#fff;font-weight:900}
@@ -83,11 +99,11 @@
 <div class="brandIcon" id="brandIcon">🪙</div>
 <div><div class="brandName" id="brandName">টাকার হাট</div><div class="brandSub" id="brandSub">Earn • Rewards • Wallet</div></div>
 </div>
-<button class="bell" id="notifyBtn" onclick="toast(settings.userUI.notificationToast)">🔔</button>
+<button class="bell" id="notifyBtn" onclick="toast(settings.userUI.notificationToast)">✦ LIVE</button>
 </div>
 <section class="page active" id="home">
 <div class="hero">
-<div class="eyebrow" id="balanceEyebrow">Available balance • BDT • Active</div>
+<div class="heroTag">Taka Hat • Personal Reward Hub</div><div class="eyebrow" id="balanceEyebrow">Available balance • BDT • Active</div>
 <div class="money">৳ <b id="bal">0.00</b> <span id="balanceCurrency">BDT</span></div>
 <div class="today"><span id="todayLabel">Today</span>: ৳ <span id="todayEarn">0.00</span></div>
 <div class="stats">
@@ -96,6 +112,7 @@
 <div class="stat"><strong id="streak">0</strong><span id="streakLabel">Streak</span></div>
 </div>
 </div>
+<div class="routeIntro"><div><h3 id="quickEarnHeading">Your daily route</h3><p>Free tools stay available. Rewarded ads are used only when you choose the rewarded lane.</p></div><div class="routeMark">4 CORE TOOLS</div></div>
 <div class="title" id="quickEarnTitle">Quick earn</div>
 <div class="grid">
 <button class="card" onclick="go('earn')"><div class="icon" id="watchIcon">🎁</div><div class="ct" id="watchTitle">Watch &amp; Earn</div><div class="cs" id="watchDesc">Rewarded ad সম্পূর্ণ করে reward নিন।</div><div class="limit"><span id="watchLimitLabel">Today limit</span><b id="adRemain">50</b></div></button>
@@ -103,21 +120,28 @@
 <button class="card" onclick="checkin()"><div class="icon" id="checkinIcon">🎁</div><div class="ct" id="checkinTitle">Daily Check-in</div><div class="cs" id="checkinDesc">প্রতিদিন একবার bonus claim করুন।</div></button>
 <button class="card" onclick="go('ref')"><div class="icon" id="referIcon">👥</div><div class="ct" id="referTitle">Refer &amp; Earn</div><div class="cs" id="referDesc">বন্ধু invite করে reward নিন।</div></button>
 </div>
+<div class="featureGrid">
+  <div class="featureCard"><b>FREE TOOLS</b><span>Daily Claim and Prize Wheel work without watching an ad.</span></div>
+  <div class="featureCard"><b>REWARDED LANE</b><span>Ads appear on the Watch &amp; Earn screen after you choose them.</span></div>
+  <div class="featureCard"><b>WALLET</b><span>Balance, referrals and payout requests stay inside your account.</span></div>
+</div>
 <div class="title" id="communityTitle">Community</div>
 <button class="join" onclick="join()"><span id="communityIcon">📢</span> <span id="communityButton">জয়েন করুন</span></button>
 </section>
 <section class="page" id="earn">
 <div class="title"><span id="earnPageIcon">🎁</span> <span id="earnPageTitle">Watch &amp; Earn</span></div>
+<div class="adNotice"><strong>Rewarded ad placement: this screen only</strong><span>You choose when to watch it. The ad is not required for Daily Claim, Prize Wheel, referrals, profile or withdrawals.</span></div>
 <div class="panel">
 <div class="panelHead"><b id="rewardedTitle">Rewarded Advertisement</b><span class="muted"><span id="leftLabel">Left</span>: <b id="adLeft">50</b></span></div>
-<p class="muted" id="earnDescription">সম্পূর্ণ rewarded ad দেখলে reward যোগ হবে।</p><br/>
+<p class="muted" id="earnDescription">সম্পূর্ণ rewarded ad দেখলে reward যোগ হবে।</p>
+<div class="freeBadge">Reward shown before watch: ৳<span id="adRewardValue">0.02</span></div><br/>
 <button class="adbtn" id="adBtn" onclick="watchAd()"><span id="watchAdIcon">🎬</span> <span id="watchAdButton">Watch Ad</span></button>
 </div>
 </section>
 <section class="page" id="spin">
 <div class="title"><span id="spinPageIcon">🎡</span> <span id="spinPageTitle">Lucky Spin</span></div>
 <div class="panel wheelBox">
-<div class="muted"><span id="spinTodayLabel">আজকের Spin বাকি</span>: <b id="spinLeft">1</b></div>
+<div class="muted"><span id="spinTodayLabel">আজকের Spin বাকি</span>: <b id="spinLeft">1</b></div><div class="freeBadge">Free spin • No rewarded ad required</div>
 <div class="wheelWrap">
 <div class="pointer"></div>
 <div class="wheel" id="wheel">
@@ -131,6 +155,7 @@
 <section class="page" id="withdraw">
 <div class="title"><span id="withdrawPageIcon">💸</span> <span id="withdrawPageTitle">Withdraw</span></div>
 <div class="panel">
+<div class="freeBadge">Wallet payout • No ad required</div><br/>
 <label>Payment Method</label>
 <select id="method"><option value="">Select method</option><option>bKash</option><option>Nagad</option><option>Rocket</option></select>
 <label id="accountNumberLabel">Account Number</label><input id="number" inputmode="numeric" placeholder="01XXXXXXXXX"/>
@@ -143,6 +168,7 @@
 <section class="page" id="ref">
 <div class="title"><span id="refPageIcon">👥</span> <span id="refPageTitle">Refer &amp; Earn</span></div>
 <div class="panel">
+<div class="freeBadge">Referral tools stay free to use</div><br/>
 <b id="referralLinkLabel">Your referral link</b>
 <p class="muted" id="refLink" style="word-break:break-all;margin-top:10px"></p>
 <br/><button class="join" onclick="copyRef()"><span id="copyLinkIcon">📋</span> <span id="copyLinkButton">Copy Link</span></button>
@@ -179,7 +205,7 @@
 "use strict";
 
 const FIREBASE_DB_URL = "https://takar-hat-default-rtdb.firebaseio.com";
-const DEFAULT_USER_UI = {"appTitle":"Taka Hat","brandIcon":"🪙","brandName":"টাকার হাট","brandSub":"Earn • Rewards • Wallet","notificationIcon":"🔔","notificationToast":"Notifications","balanceLabel":"Available balance","currencyLabel":"BDT","activeLabel":"Active","todayLabel":"Today","adsTodayLabel":"Ads today","referralsLabel":"Referrals","streakLabel":"Streak","quickEarnTitle":"Quick earn","watchIcon":"🎁","watchTitle":"Watch & Earn","watchDesc":"Rewarded ad সম্পূর্ণ করে reward নিন।","watchLimitLabel":"Today limit","spinIcon":"🎡","spinTitle":"Lucky Spin","spinDesc":"Daily spin chance ব্যবহার করুন।","spinLeftLabel":"Spins left","checkinIcon":"🎁","checkinTitle":"Daily Check-in","checkinDesc":"প্রতিদিন একবার bonus claim করুন।","referIcon":"👥","referTitle":"Refer & Earn","referDesc":"বন্ধু invite করে reward নিন।","communityTitle":"Community","communityIcon":"📢","communityButton":"জয়েন করুন","earnPageIcon":"🎁","earnPageTitle":"Watch & Earn","rewardedTitle":"Rewarded Advertisement","leftLabel":"Left","earnDescription":"সম্পূর্ণ rewarded ad দেখলে reward যোগ হবে।","watchAdIcon":"🎬","watchAdButton":"Watch Ad","spinPageIcon":"🎡","spinPageTitle":"Lucky Spin","spinTodayLabel":"আজকের Spin বাকি","spinButton":"SPIN NOW","spinRunningText":"🎡 Spin চলছে… ৳{amount} reward already added","spinResultText":"🎉 আপনি পেয়েছেন ৳{amount}","withdrawPageIcon":"💸","withdrawPageTitle":"Withdraw","paymentMethodLabel":"Payment Method","selectMethod":"Select method","accountNumberLabel":"Account Number","accountPlaceholder":"01XXXXXXXXX","amountLabel":"Amount (BDT)","amountPlaceholder":"50","withdrawButtonIcon":"💸","withdrawButton":"Withdraw Request","historyTitle":"History","historyEmpty":"No withdrawal yet.","refPageIcon":"👥","refPageTitle":"Refer & Earn","referralLinkLabel":"Your referral link","copyLinkIcon":"📋","copyLinkButton":"Copy Link","profilePageIcon":"👤","profilePageTitle":"Profile","profileNameLabel":"Name","profileTelegramLabel":"Telegram ID","profileBalanceLabel":"Balance","navHomeIcon":"🏠","navHome":"Home","navEarnIcon":"🎁","navEarn":"Earn","navWithdrawIcon":"💸","navWithdraw":"Withdraw","navProfileIcon":"👤","navProfile":"Profile","countryIcon":"🌍","countryTitle":"Warning","countryClose":"ঠিক আছে","bkashLabel":"bKash","nagadLabel":"Nagad","rocketLabel":"Rocket","pendingStatus":"PENDING","completedStatus":"COMPLETED","rejectedStatus":"REJECTED"};
+const DEFAULT_USER_UI = {"appTitle":"Taka Hat","brandIcon":"🪙","brandName":"টাকার হাট","brandSub":"Daily Rewards • Personal Wallet","notificationIcon":"✦","notificationToast":"Taka Hat is live","balanceLabel":"Wallet balance","currencyLabel":"BDT","activeLabel":"Ready","todayLabel":"Today","adsTodayLabel":"Rewarded views","referralsLabel":"Invites","streakLabel":"Streak","quickEarnTitle":"Quick earn","watchIcon":"🎬","watchTitle":"Watch & Earn","watchDesc":"Choose the rewarded lane, finish the ad, then collect the shown bonus.","watchLimitLabel":"Daily ad limit","spinIcon":"🎡","spinTitle":"Prize Wheel","spinDesc":"Use your free daily spin. No rewarded ad is required.","spinLeftLabel":"Free spins left","checkinIcon":"✅","checkinTitle":"Daily Claim","checkinDesc":"Claim today's bonus directly — no ad needed.","referIcon":"🔗","referTitle":"Invite Circle","referDesc":"Share your personal link and track referrals.","communityTitle":"Taka Hat Community","communityIcon":"📣","communityButton":"Open Community","earnPageIcon":"🎬","earnPageTitle":"Rewarded Lane","rewardedTitle":"Rewarded Advertisement","leftLabel":"Left today","earnDescription":"Watch the rewarded ad fully to receive the shown bonus. Ads are used only on this screen.","watchAdIcon":"▶","watchAdButton":"Watch Rewarded Ad","spinPageIcon":"🎡","spinPageTitle":"Prize Wheel","spinTodayLabel":"Free spins remaining","spinButton":"PLAY FREE SPIN","spinRunningText":"🎡 Wheel rolling… your prize is ৳{amount}","spinResultText":"🎉 Prize unlocked: ৳{amount}","withdrawPageIcon":"💸","withdrawPageTitle":"Withdraw","paymentMethodLabel":"Payment Method","selectMethod":"Select method","accountNumberLabel":"Account Number","accountPlaceholder":"01XXXXXXXXX","amountLabel":"Amount (BDT)","amountPlaceholder":"50","withdrawButtonIcon":"💸","withdrawButton":"Withdraw Request","historyTitle":"History","historyEmpty":"No withdrawal yet.","refPageIcon":"👥","refPageTitle":"Refer & Earn","referralLinkLabel":"Your referral link","copyLinkIcon":"📋","copyLinkButton":"Copy Link","profilePageIcon":"👤","profilePageTitle":"Profile","profileNameLabel":"Name","profileTelegramLabel":"Telegram ID","profileBalanceLabel":"Balance","navHomeIcon":"🏠","navHome":"Home","navEarnIcon":"🎁","navEarn":"Earn","navWithdrawIcon":"💸","navWithdraw":"Withdraw","navProfileIcon":"👤","navProfile":"Profile","countryIcon":"🌍","countryTitle":"Warning","countryClose":"ঠিক আছে","bkashLabel":"bKash","nagadLabel":"Nagad","rocketLabel":"Rocket","pendingStatus":"PENDING","completedStatus":"COMPLETED","rejectedStatus":"REJECTED"};
 const DEFAULT_SETTINGS = {
   adReward: 0.02,
   adLimit: 50,
@@ -697,7 +723,8 @@ function render(){
   ["adRemain","adLeft"].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=adLeft});
   ["spinRemain","spinLeft"].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=spinLeft});
   const adBtn=document.getElementById("adBtn");if(adBtn)adBtn.disabled=adLeft<=0||adShowing;
-  const spinBtn=document.getElementById("spinBtn");if(spinBtn)spinBtn.disabled=spinLeft<=0||spinBusy||adShowing;
+  const adRewardValue=document.getElementById("adRewardValue");if(adRewardValue)adRewardValue.textContent=money(settings.adReward);
+  const spinBtn=document.getElementById("spinBtn");if(spinBtn)spinBtn.disabled=spinLeft<=0||spinBusy;
   const daily=document.getElementById("dailyBonusText");if(daily)daily.textContent=money(settings.dailyBonus);
   renderPaymentMethods();
   renderWheel();
@@ -791,6 +818,7 @@ async function checkin(){
   if(data.dailyClaim===todayBD()){toast("আজকের Daily Check-in already claimed");return;}
   const r=Number(settings.dailyBonus||0);
   if(r<=0){toast("Admin থেকে Daily Bonus সেট করা হয়নি");return;}
+  // Daily Claim is a basic/free function and never requires a rewarded ad.
   data.dailyClaim=todayBD();
   data.balance=Number(data.balance||0)+r;
   data.today=Number(data.today||0)+r;
@@ -820,16 +848,15 @@ async function spin(){
   const reward=weightedReward();
   if(!reward){toast("Admin থেকে Spin reward সেট করা হয়নি");return;}
 
-  /* No ad is required for the basic Lucky Spin function. */
-
-  /* Spin -> reward is added immediately. */
+  // Prize Wheel is a basic/free function and never requires a rewarded ad.
+  /* Free spin -> reward is added immediately. */
   const amount=Number(reward.amount||0);
   data.spins=Number(data.spins||0)+1;
   data.balance=Number(data.balance||0)+amount;
   data.today=Number(data.today||0)+amount;
   persistLocal();
   render();
-  saveUserCloud();
+  await saveUserCloud();
 
   /* Then play the wheel animation. */
   spinBusy=true;
