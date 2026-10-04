@@ -791,7 +791,6 @@ async function checkin(){
   if(data.dailyClaim===todayBD()){toast("আজকের Daily Check-in already claimed");return;}
   const r=Number(settings.dailyBonus||0);
   if(r<=0){toast("Admin থেকে Daily Bonus সেট করা হয়নি");return;}
-  // Daily Check-in is available without requiring a rewarded ad.
   data.dailyClaim=todayBD();
   data.balance=Number(data.balance||0)+r;
   data.today=Number(data.today||0)+r;
@@ -821,7 +820,9 @@ async function spin(){
   const reward=weightedReward();
   if(!reward){toast("Admin থেকে Spin reward সেট করা হয়নি");return;}
 
-  /* Lucky Spin is available without requiring a rewarded ad. */
+  /* No ad is required for the basic Lucky Spin function. */
+
+  /* Spin -> reward is added immediately. */
   const amount=Number(reward.amount||0);
   data.spins=Number(data.spins||0)+1;
   data.balance=Number(data.balance||0)+amount;
